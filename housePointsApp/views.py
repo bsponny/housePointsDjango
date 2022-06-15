@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import House
 
 def index(request):
-    houses = House.objects.all()
+    houses = House.objects.order_by('-points')
     context = {
             'houses': houses,
     }
@@ -31,6 +31,9 @@ def addPoints(request):
     return HttpResponseRedirect('/')
 
 def reset(request):
+    return render(request, 'housePointsApp/reset.html', {})
+
+def confirm(request):
     houses = House.objects.all()
 
     for house in houses:
