@@ -1,3 +1,11 @@
+venv
+.DS_Store
+__pycache__
+*.pyc
+*.csv
+*.zip
+*.bak
+db.sqlite3
 *.iml
 .gradle
 /local.properties
@@ -7,7 +15,6 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-.DS_Store
 /build
 /captures
 .externalNativeBuild

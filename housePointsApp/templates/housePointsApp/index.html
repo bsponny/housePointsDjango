@@ -34,13 +34,11 @@
 				<input type=submit value=GO>
 			</form>
 		</div>
-		<div class="grid">
-			{% for house in houses %}
-			<div class="{{house.color}} box">
-				<p>{{house.name}}</p> <p>{{house.points}}</p>
-			</div>
-			{% endfor %}
+		{% for house in houses %}
+		<div class="{{house.color}} box">
+			<p>{{house.name}}</p> <p>{{house.points}}</p>
 		</div>
+		{% endfor %}
 		<a href="{% url 'reset' %}">
 			<div class="white box">
 				RESET
