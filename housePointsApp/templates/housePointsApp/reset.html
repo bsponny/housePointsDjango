@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Reset House Points</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'housePointsApp/style.css' %}" />
+	</head>
+	<body>
+		<div class="title black box">
+			<h1>Are you sure you want to reset the points?</h1>
+		</div>
+		<div class="white box">
+			<a href="{% url 'confirm' %}">
+				<h2>CONFIRM</h2>
+			</a>
+			<a href="{% url 'index' %}">
+				<h2>CANCEL</h2>
+			</a>
+	</body>
+</html>

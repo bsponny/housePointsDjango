@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>CS1400 - Hogwarts House Points</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'housePointsApp/style.css' %}" />
+	</head>
+	<body>
+		<div class="title black box">
+			<h1>CS1400 - Hogwarts House Points</h1>
+		</div>
+		<div class="white box">
+			<form method='POST' action="{% url 'addPoints' %}">
+				{% csrf_token %}
+				<label for="houseName">House: </label>
+				<select id=houseName name=houseName>
+					<option value='' name=''></option>
+					<option value='Slytherin' name='Slytherin'>Slytherin</option>
+					<option value='Ravenclaw' name='Ravenclaw'>Ravenclaw</option>
+					<option value='Hufflepuff' name='Hufflepuff'>Hufflepuff</option>
+					<option value='Gryffindor' name='Gryffindor'>Gryffindor</option>
+				</select>
+
+				<input type="radio" id="add5" name="points" value="add5">
+				<label for=add5>+5</label>
+				<input type="radio" id="sub5" name="points" value="sub5">
+				<label for=sub5>-5</label>
+				<input type="radio" id="add10" name="points" value="add10">
+				<label for=add10>+10</label>
+				<input type="radio" id="sub10" name="points" value="sub10">
+				<label for=sub10>-10</label>
+				<input type="number" id="students" name="students" placeholder="Number of Students">
+
+				<input type=submit value=GO>
+			</form>
+		</div>
+		{% for house in houses %}
+		<div class="{{house.color}} box">
+			<p>{{house.name}}</p> <p>{{house.points}}</p> <p>{{house.students}}</p>
+		</div>
+		{% endfor %}
+		<a href="{% url 'reset' %}">
+			<div class="white box">
+				RESET
+			</div>
+		</a>
+
+	</body>
+</html>
