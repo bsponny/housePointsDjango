@@ -13,6 +13,7 @@ def index(request):
 def addPoints(request):
     houseName = request.POST.get('houseName')
     points = request.POST.get('points')
+    students = request.POST.get('students')
 
     if houseName == '' or points == '':
         return HttpResponseRedirect('/')
@@ -26,6 +27,9 @@ def addPoints(request):
         house.points += 10
     elif points == 'sub10':
         house.points -= 10
+    
+    if students != '':
+        house.students = students
 
     house.save()
     return HttpResponseRedirect('/')
@@ -38,6 +42,7 @@ def confirm(request):
 
     for house in houses:
         house.points = 0
+        house.students = 0
         house.save()
 
     return HttpResponseRedirect('/')
