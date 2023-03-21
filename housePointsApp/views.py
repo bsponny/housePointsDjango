@@ -37,11 +37,19 @@ def addPoints(request):
 def reset(request):
     return render(request, 'housePointsApp/reset.html', {})
 
-def confirm(request):
+def confirmPoints(request):
     houses = House.objects.all()
 
     for house in houses:
         house.points = 0
+        house.save()
+
+    return HttpResponseRedirect('/')
+
+def confirmStudents(request):
+    houses = House.objects.all()
+
+    for house in houses:
         house.students = 0
         house.save()
 
