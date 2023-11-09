@@ -12,21 +12,18 @@ def index(request):
 
 def addPoints(request):
     houseName = request.POST.get('houseName')
+    operation = request.POST.get('operation')
     points = request.POST.get('points')
     students = request.POST.get('students')
 
-    if houseName == '' or points == '':
+    if houseName == '':
         return HttpResponseRedirect('/')
 
     house = get_object_or_404(House, name=houseName)
-    if points == 'add5':
-        house.points += 5
-    elif points == 'sub5':
-        house.points -= 5
-    elif points == 'add10':
-        house.points += 10
-    elif points == 'sub10':
-        house.points -= 10
+    if operation == 'add':
+        house.points += int(points)
+    elif operation == 'sub':
+        house.points -= int(points)
     
     if students != '':
         house.students = students
@@ -55,3 +52,8 @@ def confirmStudents(request):
 
     return HttpResponseRedirect('/')
 
+def confirmAll(request):
+    confirmPoints(request)
+    confirmStudents(request)
+
+    return HttpResponseRedirect('/')

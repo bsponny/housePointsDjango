@@ -7,4 +7,4 @@ class House(models.Model):
     students = models.IntegerField(default=0)
     
     def __str__(self):
-        return self.name + ": " + str(self.points) + "; color: " + self.color + "; id: " + str(self.id)
+        return self.name + ": " + str(self.points) + "; color: " + self.color + "; id: " + str(self.id) + "; students: " + str(self.students)
